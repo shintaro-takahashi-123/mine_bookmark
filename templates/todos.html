@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script>
+        async function deleteTodo(id) {
+            const response = await fetch(`/todos/${id}`, { method: 'DELETE' });
+            if (response.ok) {
+                location.reload();  // Reload the page after deletion
+            }
+        }
+
+        async function toggleComplete(id) {
+            const response = await fetch(`/todos/${id}/complete`, { method: 'POST' });
+            if (response.ok) {
+                location.reload();  // Reload the page after toggling complete status
+            }
+        }
+
+        async function editTodo(id) {
+            const newTitle = prompt("Enter new title:");
+            if (newTitle) {
+                const response = await fetch(`/todos/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title: newTitle })
+                });
+                if (response.ok) {
+                    location.reload();  // Reload the page after editing the title
+                }
+            }
+        }
+
+        async function deleteTag(id) {
+            const response = await fetch(`/tags/${id}`, { method: 'DELETE' });
+            if (response.ok) {
+                location.reload();  // Reload the page after tag deletion
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <dev class="header-contents">
+            <dev class="header-logo">
+                <a href="/"><h1>Todo List</h1></a>
+            </dev>
+            <dev class="header-menu">
+                <a href="tags" class="header-menu-link"><h1>Tags</h1></a>
+                <h1>Alert</h1>
+            </dev>
+    </header>
+    <main>
+        {% for todo in todos %}
+        {% if not todo.completed %}
+            <div class="todo-contents" id="todo-{{ todo.id }}">
+                <span class="todo-name">{{ todo.title }}
+                    - {% for tag in todo.tags %}{{ tag.name }}{% if not loop.last %}, {% endif %}{% endfor %}
+                </span><br>
+                <span class="todo-status">
+                    <span class="status">{% if todo.completed %}Completed{% else %}Pending{% endif %}</span>
+                    <br>
+                    <span class="status">
+                        <button onclick="toggleComplete({{ todo.id }})" class="custom-btn btn-clear">
+                            {% if todo.completed %}Mark as Pending{% else %}Mark as Completed{% endif %}
+                        </button>
+                        <button onclick="editTodo({{ todo.id }})" class="custom-btn btn-edit">Edit</button>
+                        <button onclick="deleteTodo({{ todo.id }})" class="custom-btn btn-delete">Delete</button>
+                    </span>
+                </span>
+            </div>
+            <br>
+            {% endif %}
+        {% endfor %}
+    </main>
+
+
+
+    <footer>
+        <div class="footer-contents">
+            <a href="/" class="menu-link"><button class="menu-btn">Incomplete</button></a>
+            <a href="completed" class="menu-link"><button class="menu-btn">Completed</button></a>
+            <a href="all" class="menu-link"><button class="menu-btn">ALL</button></a>
+            <a href="add" class="menu-link"><button class="menu-btn">Add Task</button></a>
+        </div>
+    </footer>
+</body>
+
+</html>

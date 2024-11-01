@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: auto;
+    text-align: center;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+img {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: -5;
+    width: 100%;
+    height: 100%;
+}
+header {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 70px;
+    background-color: #000000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    text-align: left;
+    vertical-align: middle;
+}
+.header-contents {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    max-width: 600px;
+    color:inherit;
+    text-decoration: none;
+}
+a,a:hover,a:visited{
+    color: inherit;
+    text-decoration: none;
+}
+a,a:visited{
+    color: #ffffff;/*カラーコードは任意*/
+    text-decoration: none;
+}
+
+.header-logo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.header-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+}
+.header-menu-link {
+
+}
+main {
+    font-family: Arial, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    margin-bottom: 80px;
+    height: 100%;
+    max-width: 600px;
+    text-align: center;
+    background-color: #000000;
+    z-index: 5;
+    border-left: 1px solid #ffffff; /* ボーダーの幅とスタイルを追加 */
+    border-right: 1px solid #ffffff; /* ボーダーの幅とスタイルを追加 */
+}
+
+footer {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 90px;
+    background-color: #000000;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.footer-contents {
+    font-family: Arial, sans-serif;
+    margin: auto;
+    padding: 10px;
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    text-align: center;
+    background-color: #000000;
+    z-index: 5;
+    display: flex;
+    justify-content: space-around;
+}
+.menu-btn {
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    position: relative;
+    background-color: #000000;
+}
+.menu-link {
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    position: relative;
+    background-color: #000000;
+}
